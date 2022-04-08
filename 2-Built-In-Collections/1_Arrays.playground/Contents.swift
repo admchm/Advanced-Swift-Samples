@@ -45,5 +45,32 @@ for (num, element) in nums.enumerated() {
 // Want to transform all the elements in an array?
 // Want to fetch only the elements matching a specific criterion?
 
+/* Transforming Arrays */
 
+var squared: [Int] = []
+for fib in fibs {
+    squared.append(fib * fib)
+}
+// squared //
+
+// map
+/*
+ * “you see map, and you immediately know what’s happening: a function is going to be applied to every
+ * element”
+ * Excerpt From: Chris Eidhof. “Advanced Swift”.
+ */
+
+let squares = fibs.map { fib in fib * fib }
+// squares //
+
+extension Array {
+    func map<T>(_ transform: (Element) -> T) -> [T] {
+        var result: [T] = []
+        result.reserveCapacity(count)
+        for x in self {
+            result.append(transform(x))
+        }
+        return result
+    }
+}
 
